@@ -1306,11 +1306,23 @@ section h2 {
   transform:scale(1.03);
 }
 
-/* altura menor em telas pequenas */
-@media(max-width:540px){
-  .vip-gallery-grid img{height:200px;}
-}
+/* === VIP GALLERY – Mobile: mostrar a imagem inteira, sem cortes === */
+@media (max-width: 768px) {
+  .vip-gallery-grid {
+    grid-template-columns: 1fr;   /* 1 coluna: foco total na imagem */
+    gap: 1rem;                     /* leve respiro */
+  }
 
+  .vip-gallery-grid img {
+    height: auto !important;       /* remove as alturas fixas (240/200px) */
+    max-height: 70vh;              /* evita imagens gigantes na rolagem */
+    object-fit: contain !important;/* exibe 100% da imagem, sem crop */
+    background: #000;              /* letterbox discreto nas bordas */
+    padding: 6px;                  /* evita encostar no contorno arredondado */
+    border-radius: 8px;            /* mantém o look dos cards */
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,.55);
+  }
+}
 
 /* ==========================================================
    ZIG-DIVIDER – divisor serrilhado
